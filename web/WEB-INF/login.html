@@ -6,12 +6,12 @@
 </head>
 <body>
     <h1>Welcome to the login page</h1>
-    <form action="action_page.php">
+    <form method="POST" name="loginForm" action="/login">
         Username: <input type="text" name="firstname">
         <br>
-        Password: <input type="text" name="lastname">
+        Password: <input type="password" name="password">
         <br><br>
-        <input type="submit" onclick="alert('Submitted')">
+        <input type="submit">
     </form>
     <p>If sumbit did go wrong <a href="http://www.w3.org/">Invalid credentials</a> page.<br>
         Register here! <a href="=http://www.w3.org/"> Register </a> </p>
