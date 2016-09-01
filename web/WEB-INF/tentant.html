@@ -7,14 +7,16 @@
 <body>
     <h1>Search rooms</h1>
     <form action="action_page.php">
-        Number of m^2: <input type="text" name="numberOfM2">
+        Number of m^2: <input type="rangem2" name="sqm" min="0" max="200">
         <br>
-        Max price: <input type="text" name="maxPrice">
+        Max price: <input type="rangeprice" name="price" min="0" max="1000">
         <br>
         City: <select name="city">
-        <option value="amsterdam">Tenant</option>
-        <option value="landlord">Landlord</option>
-    </select>
+        <option value="amsterdam">Amsterdam</option>
+        <option value="london">London</option>
+        <option value="berlin">Berlin</option>
+        <option value="newyork">New York</option>
+        </select>
         <input type="submit" onclick="alert('Submitted')">
     </form>
 
