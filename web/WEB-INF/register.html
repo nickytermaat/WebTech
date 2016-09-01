@@ -2,9 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Register</title>
 </head>
 <body>
+    <h1>Welcome to the login page</h1>
+    <form action="action_page.php">
+        Username: <input type="text" name="firstname">
+        <br>
+        Password: <input type="text" name="lastname">
+        <br>
+        Usertype: <select name="usertype">
+        <option value="tenant">Tenant</option>
+        <option value="landlord">Landlord</option>
+    </select>
+        <br>
+        <input type="submit" onclick="alert('Submitted')">
+    </form>
 
 </body>
 </html>
