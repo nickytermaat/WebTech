@@ -1,3 +1,4 @@
+
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="WebTech:war exploded">
     <output-path>$PROJECT_DIR$/out/artifacts/WebTech_war_exploded</output-path>

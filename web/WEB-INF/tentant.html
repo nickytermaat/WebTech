@@ -7,10 +7,14 @@
 <body>
     <h1>Search rooms</h1>
     <form action="action_page.php">
-        Username: <input type="text" name="firstname">
+        Number of m^2: <input type="text" name="numberOfM2">
         <br>
-        Password: <input type="text" name="lastname">
-        <br><br>
+        Max price: <input type="text" name="maxPrice">
+        <br>
+        City: <select name="city">
+        <option value="amsterdam">Tenant</option>
+        <option value="landlord">Landlord</option>
+    </select>
         <input type="submit" onclick="alert('Submitted')">
     </form>
 
