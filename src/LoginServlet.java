@@ -20,7 +20,7 @@ public class LoginServlet extends HttpServlet {
 
         if(DataSingleton.getInstance().login(request.getParameter("firstname"), request.getParameter("password"))){
             //login successful, redirect to showUser
-            System.out.println("successfu;");
+            System.out.println("successful");
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/tenant.html");
             response.sendRedirect("/searchrooms");
             // .forward(request, response);

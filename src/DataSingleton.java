@@ -66,4 +66,12 @@ public class DataSingleton {
     public void addUser(User user){
         users.add(user);
     }
+
+    public String showRooms(double price, double sqm, String city){
+        String room = "";
+        for (int i = 0; i < rooms.size() ; i++) {
+            room += "<p>Room " + i + ": $" + rooms.get(i).getPrice() + " Sqm " + rooms.get(i).getSurface() + " located in "  + rooms.get(i).getCity() + "</p> \n" ;
+        }
+        return room;
+    }
 }

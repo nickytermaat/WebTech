@@ -6,7 +6,14 @@
 </head>
 <body>
     <h1>Add rooms</h1>
-    <p>Landlord, add a new room </p>
+
+    <p> Landlord, add a room</p>
+    <form method="POST" name="addRoomForm" action="/addroom">
+        Square meters <input type="text" name="sqm"><br>
+        Price <input type="text" name="price"><br>
+        City <input type="text" name="city"><br>
+        <input type="submit" value="Submit">
+    </form>
 
 </body>
 </html>
