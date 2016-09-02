@@ -54,4 +54,16 @@ public class DataSingleton {
         }
         return false;
     }
+
+    public boolean uniqueUser(String username){
+        for (User user : users){
+            if(user.getUsername().equals(username))
+                return false;
+        }
+        return true;
+    }
+
+    public void addUser(User user){
+        users.add(user);
+    }
 }

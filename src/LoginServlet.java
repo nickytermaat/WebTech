@@ -14,7 +14,7 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //Checks if posted data is correct
         System.out.println("Is posted to login Servlet");
-
+        System.out.println(request.getHeader("maxParameterCount"));
         System.out.println(request.getParameter("firstname"));
         System.out.println(request.getParameter("password"));
 
@@ -35,7 +35,6 @@ public class LoginServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //Gets the page to display
-        System.out.println("hoi");
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/login.html");
         requestDispatcher.forward(request, response);
     }
