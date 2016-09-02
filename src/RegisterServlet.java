@@ -32,7 +32,7 @@ public class RegisterServlet extends HttpServlet {
                     + "<html>\n"
                     + "<head><title>Invalid registration</title></head>\n"
                     + "<body>\n"
-                    + "Something went wrong! That username may already be taken, or your passwords didn't match...\n"
+                    + "<p>Something went wrong! That username may already be taken, or your passwords didn't match...</p>\n"
                     + "Click <a href=\"/register\"> here </a> to try again.\n"
                     + "</body></html>");
         }
