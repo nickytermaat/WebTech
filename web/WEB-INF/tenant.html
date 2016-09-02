@@ -7,9 +7,9 @@
 <body>
     <h1>Search rooms</h1>
     <form action="action_page.php">
-        Number of m^2: <input type="rangem2" name="sqm" min="0" max="200">
+        Number of m^2: <input type="range" id="sqm" name="sqm" oninput="updateSqm(value)" min="0" max="200">
         <br>
-        Max price: <input type="rangeprice" name="price" min="0" max="1000">
+        Max price: <input type="range" name="price" min="0" max="1000">
         <br>
         City: <select name="city">
         <option value="amsterdam">Amsterdam</option>
@@ -17,8 +17,13 @@
         <option value="berlin">Berlin</option>
         <option value="newyork">New York</option>
         </select>
-        <input type="submit" onclick="alert('Submitted')">
+        <input type="submit">
     </form>
 
 </body>
 </html>
+<script>
+    function updateSqm(value){
+        console.log(value);
+    }
+</script>

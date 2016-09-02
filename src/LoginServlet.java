@@ -22,7 +22,8 @@ public class LoginServlet extends HttpServlet {
             //login successful, redirect to showUser
             System.out.println("successfu;");
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/tenant.html");
-            requestDispatcher.forward(request, response);
+            response.sendRedirect("/searchrooms");
+            // .forward(request, response);
         } else {
             //login unsuccessful, redirect to invalidCredentials.html
             System.out.println("unsuccessful");
@@ -34,6 +35,7 @@ public class LoginServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //Gets the page to display
+        System.out.println("hoi");
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/login.html");
         requestDispatcher.forward(request, response);
     }
