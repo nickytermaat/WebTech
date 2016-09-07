@@ -41,33 +41,4 @@ public class OurContextListener implements ServletContextListener {
 
     }
 
-//    public boolean login(String username, String password){
-//        for (User user : users) {
-//            if (user.getUsername().toLowerCase().equals(username.toLowerCase()) && user.getPassword().equals(password)) {
-//                return true;
-//            }
-//        }
-//        return false;
-//    }
-//
-//    public boolean uniqueUser(String username){
-//        for (User user : users){
-//            if(user.getUsername().equals(username))
-//                return false;
-//        }
-//        return true;
-//    }
-//
-//    public void addUser(User user){
-//        users.add(user);
-//    }
-//
-//    public String showRooms(double price, double sqm, String city){
-//        String room = "";
-//        for (int i = 0; i < rooms.size() ; i++) {
-//            room += "<p>Room " + i + ": $" + rooms.get(i).getPrice() + " Sqm " + rooms.get(i).getSurface() + " located in "  + rooms.get(i).getCity() + "</p> \n" ;
-//        }
-//        return room;
-//    }
-
 }
