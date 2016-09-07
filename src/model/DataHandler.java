@@ -1,3 +1,5 @@
+package model;
+
 import com.sun.deploy.net.HttpRequest;
 import model.User;
 
@@ -8,8 +10,8 @@ import java.util.ArrayList;
 /**
  * Created by Kris on 9/7/2016.
  */
-final class DataHandler {
-    static boolean login(HttpServletRequest request){
+public final class DataHandler {
+    public static boolean login(HttpServletRequest request){
         ArrayList<User> users = ((ArrayList<User>) request.getServletContext().getAttribute("users"));
 
         for (User user : users) {

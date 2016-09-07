@@ -1,3 +1,5 @@
+package servlet;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,7 +14,7 @@ import java.io.IOException;
 @WebServlet("/addroom")
 public class AddRoomServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("Is posted to AddRoomServlet");
+        System.out.println("Is posted to servlet.AddRoomServlet");
 
         System.out.println(request.getParameter("sqm"));
         System.out.println(request.getParameter("price"));
