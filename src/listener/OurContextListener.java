@@ -28,8 +28,10 @@ public class OurContextListener implements ServletContextListener {
 
         ArrayList<Room> newRooms = new ArrayList<>();
         newRooms.add(new Room(285.00, 18.00, "amsterdam"));
+        newRooms.add(new Room(300.00, 20.00, "amsterdam"));
         newRooms.add(new Room(285.00, 12.00, "berlin"));
         newRooms.add(new Room(354.00, 6.00, "newyork"));
+        newRooms.add(new Room(235.00, 15.00, "amsterdam"));
 
         ctx.setAttribute("users", newUsers);
         ctx.setAttribute("rooms", newRooms);

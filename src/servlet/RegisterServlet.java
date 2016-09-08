@@ -1,5 +1,6 @@
 package servlet;
 
+import model.DataHandler;
 import model.TypeUser;
 import model.User;
 
@@ -20,7 +21,40 @@ import java.util.Map;
 @WebServlet("/register")
 public class RegisterServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getParameterNames();
+        // Add new user
+
+        // Check if chosen username is unique
+        PrintWriter pw = response.getWriter();
+        boolean uniqueUser = DataHandler.uniqueUser(request);
+
+        if (uniqueUser == false) {
+            pw.print("<html>" +
+                    "<head>" +
+                    "<title>" +
+                    "Register" +
+                    "</title>" +
+                    "</head>" +
+                    "<body>" +
+                    "The name you chose is not unique. Register with an unique name. <br />" +
+                    "Not unique username you chose: " + request.getParameter("username") + " <br/> " +
+                    "Click <a href=\"/register\"> here </a> to try again.\n" +
+                    "</body>" +
+                    "</html>");
+        } else {
+            pw.print("<html>" +
+                    "<head>" +
+                    "<title>" +
+                    "Register" +
+                    "</title>" +
+                    "</head>" +
+                    "<body>" +
+                    "You registered!  <br />" +
+                    "Your username: " + request.getParameter("username") + "<br />" +
+                    "Click <a href=\"/login\"> here </a> to go to the login page.\n" +
+                    "</body>" +
+                    "</html>" );
+        }
+
         /*if(((listener.OurContextListener)getServletContext()).uniqueUser(request.getParameter("firstname")) && request.getParameter("password").equals(request.getParameter("confirmpassword"))){
             //Name is unique, passwords match
             User user = new User(request.getParameter("firstname"), request.getParameter("password"), TypeUser.valueOf(request.getParameter("usertype")));

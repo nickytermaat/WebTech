@@ -6,18 +6,20 @@
 </head>
 <body>
     <h1>Welcome to the login page</h1>
-    <form action="register" method="POST">
-        Username: <input type="text" name="firstname">
+    <form method="POST" action="/register">
+        Username: <input type="text" name="username">
         <br>
         Password: <input type="text" name="password">
+        <br>
         Confirm password: <input type="text" name="confirmpassword">
         <br>
         Usertype: <select name="usertype">
         <option value="TENANT">Tenant</option>
         <option value="LANDLORD">Landlord</option>
+        <br>
+        <input type="submit">
         </select>
         <br>
-        <input type="submit" onclick="alert('Submitted')">
     </form>
 
 </body>

@@ -22,11 +22,11 @@ public final class DataHandler {
         return false;
     }
 
-    public boolean uniqueUser(HttpServletRequest request){
+    public static boolean uniqueUser(HttpServletRequest request){
         ArrayList<User> users = ((ArrayList<User>) request.getServletContext().getAttribute("users"));
 
         for (User user : users){
-            if(user.getUsername().equals(request.getServletContext().getAttribute("users")))
+            if(user.getUsername().equals(request.getServletContext().getAttribute("username")))
                 return false;
         }
         return true;
