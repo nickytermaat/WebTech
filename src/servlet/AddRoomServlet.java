@@ -1,5 +1,7 @@
 package servlet;
 
+import model.DataHandler;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,16 +22,17 @@ public class AddRoomServlet extends HttpServlet {
         System.out.println(request.getParameter("price"));
         System.out.println(request.getParameter("city"));
 
-
-        //DataSingleton.getInstance().showRooms(Double.parseDouble(request.getParameter("price")), Double.parseDouble(request.getParameter("sqm")), request.getParameter("city")))
-        {
+        DataHandler.addRoom(request);
+        //.showRooms(Double.parseDouble(request.getParameter("price")), Double.parseDouble(request.getParameter("sqm")), request.getParameter("city")))
+//        {
             //add room successful, redirect to show rooms
-            System.out.println("added room successful");
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/landlord.html");
-            response.sendRedirect("/showrooms");
+//            System.out.println("added room successful");
+//            RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/landlord.html");
+//            response.sendRedirect("/showrooms");
             // .forward(request, response);
 
-        }
+//        }
+        response.sendRedirect("/showrooms");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

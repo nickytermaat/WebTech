@@ -1,6 +1,8 @@
 package servlet;
 
 import model.DataHandler;
+import model.TypeUser;
+import model.User;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -22,11 +24,13 @@ public class LoginServlet extends HttpServlet {
             //login successful
             //Create or get session and store username of logged in user
 //            HttpSession session = request.getSession();
-            request.getSession().setAttribute("username", request.getParameter("username"));
 
             //Redirect to user page
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/tenant.html");
-            response.sendRedirect("/searchrooms");
+            if(((User)request.getSession().getAttribute("user")).getType().equals(TypeUser.TENANT)){
+                response.sendRedirect("/searchrooms");
+            } else {
+                response.sendRedirect("/showrooms");
+            }
 
         } else {
             //login unsuccessful, redirect to invalidCredentials.html

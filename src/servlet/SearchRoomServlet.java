@@ -1,6 +1,7 @@
 package servlet;
 
 import model.DataHandler;
+import model.User;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -55,10 +56,10 @@ public class SearchRoomServlet extends HttpServlet {
         //Check if cookie for this user exists, if not, create it
         //If cookie exists, add +1 to counter of pageVisited
         for (Cookie cookie : cookies) {
-            if (cookie.getName().equals(request.getSession().getAttribute("username"))) {
+            if (cookie.getName().equals(((User)request.getSession().getAttribute("user")).getUsername())) {
                 return cookie;
             }
         }
-        return new Cookie((String) request.getSession().getAttribute("username"), "0");
+        return new Cookie(((User)request.getSession().getAttribute("user")).getUsername(), "0");
     }
 }

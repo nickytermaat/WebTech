@@ -25,4 +25,5 @@ public class Room {
     public String getCity() {
         return city;
     }
+
 }
