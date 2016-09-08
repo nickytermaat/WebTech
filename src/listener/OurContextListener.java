@@ -27,9 +27,9 @@ public class OurContextListener implements ServletContextListener {
         newUsers.add(new User("LandLord", "lord", TypeUser.LANDLORD));
 
         ArrayList<Room> newRooms = new ArrayList<>();
-        newRooms.add(new Room(285.00, 18.00, "Amsterdam"));
-        newRooms.add(new Room(285.00, 12.00, "Berlijn"));
-        newRooms.add(new Room(354.00, 6.00, "New York"));
+        newRooms.add(new Room(285.00, 18.00, "amsterdam"));
+        newRooms.add(new Room(285.00, 12.00, "berlin"));
+        newRooms.add(new Room(354.00, 6.00, "newyork"));
 
         ctx.setAttribute("users", newUsers);
         ctx.setAttribute("rooms", newRooms);

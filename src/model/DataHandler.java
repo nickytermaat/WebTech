@@ -48,5 +48,21 @@ public final class DataHandler {
         return room;
     }
 
+    public static String filterRooms(HttpServletRequest request) {
+        ArrayList<Room> rooms = ((ArrayList<Room>) request.getServletContext().getAttribute("rooms"));
 
+        String room = "";
+        //String cityRoom = rooms.getCity().toLowerCase().equals(request.getParameter("city").toLowerCase());
+        for (int i = 0; i < rooms.size() ; i++) {
+            if (rooms.get(i).getCity().equals(request.getParameter("city").toLowerCase())) {
+                room += "<p>Room " + i + ": $" + rooms.get(i).getPrice() + " Sqm " + rooms.get(i).getSurface() + " located in "  + rooms.get(i).getCity() + "</p> \n" ;
+            }
+        }
+        if ((room.equals(""))){
+            room = "No matches found";
+        }
+
+        return room;
+
+    }
 }

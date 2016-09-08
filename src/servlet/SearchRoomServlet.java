@@ -29,7 +29,7 @@ public class SearchRoomServlet extends HttpServlet {
         cookie.setValue(String.valueOf(Integer.valueOf(cookie.getValue()) + 1));
         response.addCookie(cookie);
         String rooms = "kamers";
-        rooms = DataHandler.showRooms(request);
+        rooms = DataHandler.filterRooms(request);
         pw.print("<html>" +
                 "<head>" +
                 "<title>" +
