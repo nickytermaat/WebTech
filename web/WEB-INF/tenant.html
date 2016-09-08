@@ -6,7 +6,7 @@
 </head>
 <body>
     <h1>Search rooms</h1>
-    <form action="action_page.php">
+    <form method="POST" action="/searchrooms">
         Number of m^2: <input type="range" id="sqm" name="sqm" oninput="updateSqm(value)" min="0" max="200">
         <br>
         Max price: <input type="range" name="price" min="0" max="1000">

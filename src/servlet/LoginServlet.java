@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
@@ -18,9 +19,15 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //Checks if posted data is correct
         if(DataHandler.login(request)){
-            //login successful, redirect to showUser
+            //login successful
+            //Create or get session and store username of logged in user
+//            HttpSession session = request.getSession();
+            request.getSession().setAttribute("username", request.getParameter("username"));
+
+            //Redirect to user page
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/tenant.html");
             response.sendRedirect("/searchrooms");
+
         } else {
             //login unsuccessful, redirect to invalidCredentials.html
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/invalidcredentials.html");
@@ -32,8 +39,15 @@ public class LoginServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //Gets the page to display
 
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/login.html");
-        requestDispatcher.forward(request, response);
+        //Check if there is a session. If so, redirect to searchRoms
+        HttpSession session = request.getSession(false);
+        if(session != null) {
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/tenant.html");
+            requestDispatcher.forward(request, response);
+        }else {
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/login.html");
+            requestDispatcher.forward(request, response);
+        }
     }
 
 }
