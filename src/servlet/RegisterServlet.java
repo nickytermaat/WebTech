@@ -22,9 +22,15 @@ import java.util.Map;
 public class RegisterServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Add new user
+        System.out.println("Create new user");
+        System.out.println(request.getParameter("username"));
+        System.out.println(request.getParameter("password"));
+        System.out.println(request.getParameter("confirmpassword"));
+        System.out.println(request.getParameter("type"));
 
-        // Check if chosen username is unique
+        // First check if the username already exists
         PrintWriter pw = response.getWriter();
+
         boolean uniqueUser = DataHandler.uniqueUser(request);
 
         if (uniqueUser == false) {
@@ -41,19 +47,37 @@ public class RegisterServlet extends HttpServlet {
                     "</body>" +
                     "</html>");
         } else {
-            pw.print("<html>" +
-                    "<head>" +
-                    "<title>" +
-                    "Register" +
-                    "</title>" +
-                    "</head>" +
-                    "<body>" +
-                    "You registered!  <br />" +
-                    "Your username: " + request.getParameter("username") + "<br />" +
-                    "Click <a href=\"/login\"> here </a> to go to the login page.\n" +
-                    "</body>" +
-                    "</html>" );
+            if (request.getParameter("password").equals(request.getParameter("confirmpassword"))){
+                pw.print("<html>" +
+                        "<head>" +
+                        "<title>" +
+                        "Register" +
+                        "</title>" +
+                        "</head>" +
+                        "<body>" +
+                        "You registered!  <br />" +
+                        "Your username: " + request.getParameter("username") + "<br />" +
+                        "Click <a href=\"/login\"> here </a> to go to the login page.\n" +
+                        "</body>" +
+                        "</html>" );
+            } else {
+                pw.print("<html>" +
+                        "<head>" +
+                        "<title>" +
+                        "Register" +
+                        "</title>" +
+                        "</head>" +
+                        "<body>" +
+                        "Incorrect password!  <br />" +
+                        "Your username: " + request.getParameter("username") + "<br />" +
+                        "Your password and password confirmation are not the same" +
+                        "Click <a href=\"/register\"> here </a> to try again.\n"+
+                        "</body>" +
+                        "</html>" );
+            }
         }
+
+        DataHandler.addUser(request);
 
         /*if(((listener.OurContextListener)getServletContext()).uniqueUser(request.getParameter("firstname")) && request.getParameter("password").equals(request.getParameter("confirmpassword"))){
             //Name is unique, passwords match

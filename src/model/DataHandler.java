@@ -33,7 +33,15 @@ public final class DataHandler {
         return true;
     }
 
-    public void addUser(HttpServletRequest request){
+    public static void addUser(HttpServletRequest request){
+        System.out.println(request.getParameter("username"));
+        System.out.println();
+        System.out.println(request.getParameter("password"));
+        System.out.println();
+        System.out.println(request.getParameter("confirmpassword"));
+        System.out.println();
+        System.out.println(request.getParameter("type"));
+
         ArrayList<User> users = ((ArrayList<User>) request.getServletContext().getAttribute("users"));
 
         users.add(new User (request.getParameter("username"), request.getParameter("password"), TypeUser.valueOf(request.getParameter("type"))));
