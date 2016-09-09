@@ -1,6 +1,7 @@
 package servlet;
 
 import model.DataHandler;
+import model.TypeUser;
 import model.User;
 
 import javax.servlet.RequestDispatcher;
@@ -46,9 +47,17 @@ public class SearchRoomServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        RequestDispatcher resqDispatcher = request.getRequestDispatcher("WEB-INF/tenant.html");
-        resqDispatcher.forward(request, response);
+        if(request.getSession(false) != null) {
+            //Session is initialized, someone is logged in
+            if(((User)request.getSession().getAttribute("user")).getType().equals(TypeUser.TENANT)){
+                RequestDispatcher resqDispatcher = request.getRequestDispatcher("WEB-INF/tenant.html");
+                resqDispatcher.forward(request, response);
+            } else{
+                response.getWriter().print("You are not a tenant and are not authorized to view this page. ");
+            }
+        } else {
+            response.getWriter().print("You are not logged in. Please log in first.");
+        }
     }
 
     private Cookie getCookieForUser(HttpServletRequest request){

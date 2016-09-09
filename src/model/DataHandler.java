@@ -80,4 +80,13 @@ public final class DataHandler {
         Room room = new Room(Double.valueOf(request.getParameter("price")), Double.valueOf(request.getParameter("sqm")), request.getParameter("city"));
         ((ArrayList<Room>) request.getServletContext().getAttribute("rooms")).add(room);
     }
+
+    public static boolean loginCheck(HttpServletRequest request, TypeUser type){
+        if(request.getSession().getAttribute("user") != null){
+            //Check if a cookie exists
+            
+        }
+
+        return false;
+    }
 }
