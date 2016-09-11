@@ -26,9 +26,17 @@ public class AddRoomServlet extends HttpServlet {
      * @throws IOException
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        DataHandler.addRoom(request);
+        if(request.getParameter("price").equals("") || request.getParameter("sqm").equals("")){
+            response.getWriter().print("<html>" +
+                    "<head>" +
+                    "You didn't fill in the form completely.. <br /><button onclick='window.history.back()'>Please try again</button>" +
+                    "</body>" +
+                    "</html>");
+        } else {
+            DataHandler.addRoom(request);
 
-        response.sendRedirect("/showrooms");
+            response.sendRedirect("/showrooms");
+        }
     }
 
     /**

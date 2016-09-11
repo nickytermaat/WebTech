@@ -30,24 +30,16 @@ public class RegisterServlet extends HttpServlet {
 
         // First check if the username already exists
         PrintWriter pw = response.getWriter();
-
-        boolean uniqueUser = DataHandler.uniqueUser(request);
-
-        if (uniqueUser == false) {
-            pw.print("<html>" +
+        if(request.getParameter("username").equals("") || request.getParameter("password").equals("")){
+            response.getWriter().print("<html>" +
                     "<head>" +
-                    "<title>" +
-                    "Register" +
-                    "</title>" +
-                    "</head>" +
-                    "<body>" +
-                    "The name you chose is not unique. Register with an unique name. <br />" +
-                    "Not unique username you chose: " + request.getParameter("username") + " <br/> " +
-                    "Click <a href=\"/register\"> here </a> to try again.\n" +
+                    "You didn't fill in the form completely.. <br /><button onclick='window.history.back()'>Please try again</button>" +
                     "</body>" +
                     "</html>");
         } else {
-            if (request.getParameter("password").equals(request.getParameter("confirmpassword"))){
+            boolean uniqueUser = DataHandler.uniqueUser(request);
+
+            if (uniqueUser == false) {
                 pw.print("<html>" +
                         "<head>" +
                         "<title>" +
@@ -55,28 +47,43 @@ public class RegisterServlet extends HttpServlet {
                         "</title>" +
                         "</head>" +
                         "<body>" +
-                        "You registered!  <br />" +
-                        "Your username: " + request.getParameter("username") + "<br />" +
-                        "Click <a href=\"/login\"> here </a> to go to the login page.\n" +
+                        "The name you chose is not unique. Register with an unique name. <br />" +
+                        "Not unique username you chose: " + request.getParameter("username") + " <br/> " +
+                        "Click <a href=\"/register\"> here </a> to try again.\n" +
                         "</body>" +
-                        "</html>" );
+                        "</html>");
             } else {
-                pw.print("<html>" +
-                        "<head>" +
-                        "<title>" +
-                        "Register" +
-                        "</title>" +
-                        "</head>" +
-                        "<body>" +
-                        "Incorrect password!  <br />" +
-                        "Your username: " + request.getParameter("username") + "<br />" +
-                        "Your password and password confirmation are not the same" +
-                        "Click <a href=\"/register\"> here </a> to try again.\n"+
-                        "</body>" +
-                        "</html>" );
+                if (request.getParameter("password").equals(request.getParameter("confirmpassword"))){
+                    pw.print("<html>" +
+                            "<head>" +
+                            "<title>" +
+                            "Register" +
+                            "</title>" +
+                            "</head>" +
+                            "<body>" +
+                            "You registered!  <br />" +
+                            "Your username: " + request.getParameter("username") + "<br />" +
+                            "Click <a href=\"/login\"> here </a> to go to the login page.\n" +
+                            "</body>" +
+                            "</html>" );
+                } else {
+                    pw.print("<html>" +
+                            "<head>" +
+                            "<title>" +
+                            "Register" +
+                            "</title>" +
+                            "</head>" +
+                            "<body>" +
+                            "Incorrect password!  <br />" +
+                            "Your username: " + request.getParameter("username") + "<br />" +
+                            "Your password and password confirmation are not the same" +
+                            "Click <a href=\"/register\"> here </a> to try again.\n"+
+                            "</body>" +
+                            "</html>" );
+                }
             }
+            DataHandler.addUser(request);
         }
-        DataHandler.addUser(request);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
