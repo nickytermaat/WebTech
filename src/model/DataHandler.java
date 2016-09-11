@@ -60,7 +60,7 @@ public final class DataHandler {
      * @return a HTML string that contains all rooms
      */
     public static String showRooms(HttpServletRequest request){
-        ArrayList<Room> rooms = ((User) request.getServletContext().getAttribute("user")).getRooms();
+        ArrayList<Room> rooms = ((User) request.getSession().getAttribute("user")).getRooms();
 
         String room = "";
         for (int i = 0; i < rooms.size() ; i++) {
@@ -102,7 +102,8 @@ public final class DataHandler {
      */
     public static void addRoom(HttpServletRequest request){
         Room room = new Room(Double.valueOf(request.getParameter("price")), Double.valueOf(request.getParameter("sqm")), request.getParameter("city"));
-        ((ArrayList<Room>) request.getServletContext().getAttribute("rooms")).add(room);
+//        ((ArrayList<Room>) request.getServletContext().getAttribute("users")).add(room);
+        ((User)request.getSession().getAttribute("user")).addRoom(room);
     }
 
     /**

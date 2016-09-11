@@ -23,6 +23,8 @@ public class ShowPersonsServlet extends HttpServlet {
             for (User user : (ArrayList<User>)request.getServletContext().getAttribute("users")) {
                 response.getWriter().print(user.print());
             }
+
+            response.getWriter().print("<a href=\"/logout\">Log out</a>");
             response.getWriter().print("</body></html>");
         }
         else{

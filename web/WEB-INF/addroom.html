@@ -11,9 +11,15 @@
     <form method="POST" name="addRoomForm" action="/addroom">
         Square meters <input type="text" name="sqm"><br>
         Price <input type="text" name="price"><br>
-        City <input type="text" name="city"><br>
+        City: <select name="city">
+        <option value="amsterdam">amsterdam</option>
+        <option value="london">london</option>
+        <option value="berlin">berlin</option>
+        <option value="newyork">newyork</option>
+    </select>
         <input type="submit" value="Submit">
     </form>
+    <a href="/logout">Log out</a>
 
 </body>
 </html>

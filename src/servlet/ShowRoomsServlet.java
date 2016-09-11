@@ -42,7 +42,8 @@ public class ShowRoomsServlet extends HttpServlet {
                     "<body>" +
                     "Rooms found:" +
                     DataHandler.showRooms(request) +
-                    "    <a href=\"/addroom\"> Add a room</a>\n"+
+                    "<a href=\"/addroom\"> Add a room</a>\n"+
+                    "<a href=\"/logout\">Log out</a>"+
                     "</body>" +
                     "</html>");
 

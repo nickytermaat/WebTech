@@ -51,7 +51,7 @@ public class SearchRoomServlet extends HttpServlet {
                 rooms +
                 "<br/><button onclick='window.history.back()'>"+
                 "Go back </button>"+
-
+                "<a href=\"/logout\">Log out</a>"+
                 "</body>" +
                 "</html>");
     }
