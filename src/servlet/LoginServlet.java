@@ -45,9 +45,12 @@ public class LoginServlet extends HttpServlet {
 
         //Check if there is a session. If so, redirect to searchRoms
         HttpSession session = request.getSession(false);
-        if(session != null) {
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/tenant.html");
-            requestDispatcher.forward(request, response);
+        if(DataHandler.loginCheck(request)) {
+            if(DataHandler.typeCheck(request, TypeUser.TENANT)) {
+                response.sendRedirect("/searchrooms");
+            } else {
+                response.sendRedirect("/showrooms");
+            }
         }else {
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/login.html");
             requestDispatcher.forward(request, response);

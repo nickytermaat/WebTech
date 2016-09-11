@@ -69,4 +69,11 @@ public class User {
             this.rooms = new ArrayList<Room>();
 
     }
+
+    public String print(){
+        if (type.equals(TypeUser.LANDLORD))
+            return "<p>Landlord with username " + username + " has " + rooms.size() + "rooms. </p> <br/>";
+        else
+            return "<p>User with username " + username +"</p> <br/>";
+    }
 }

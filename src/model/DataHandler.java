@@ -106,17 +106,30 @@ public final class DataHandler {
 
     /**
      * TBI
-     * Checks if a session with a user exists.
-     * @param request
-     * @param type
+     * Checks if a session with a user exists and if his role matches the given role
+     * @param request contains the user
+     * @param type checks if the user is the given role
      * @return
      */
-    public static boolean loginCheck(HttpServletRequest request, TypeUser type){
+    public static boolean typeCheck(HttpServletRequest request, TypeUser type){
         if(request.getSession().getAttribute("user") != null){
             //Check if a cookie exists
-            
+            if(((User)request.getSession().getAttribute("user")).getType().equals(type)){
+                return true;
+            }
         }
-
+        return false;
+    }
+    /**
+     * TBI
+     * Checks if a session with a user exists and if his role matches the given role
+     * @param request contains the user
+     * @return
+     */
+    public static boolean loginCheck(HttpServletRequest request){
+        if(request.getSession().getAttribute("user") != null){
+            return true;
+        }
         return false;
     }
 }

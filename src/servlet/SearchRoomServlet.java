@@ -47,7 +47,7 @@ public class SearchRoomServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if(request.getSession(false) != null) {
+        if(DataHandler.loginCheck(request)){
             //Session is initialized, someone is logged in
             if(((User)request.getSession().getAttribute("user")).getType().equals(TypeUser.TENANT)){
                 RequestDispatcher resqDispatcher = request.getRequestDispatcher("WEB-INF/tenant.html");

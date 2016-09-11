@@ -100,7 +100,15 @@ public class RegisterServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/register.html");
-        requestDispatcher.forward(request, response);
+        if(!DataHandler.loginCheck(request)) {
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/register.html");
+            requestDispatcher.forward(request, response);
+        } else {
+            if(((User)request.getSession().getAttribute("user")).getType().equals(TypeUser.TENANT)){
+                response.sendRedirect("/searchrooms");
+            } else {
+                response.sendRedirect("/showrooms");
+            }
+        }
     }
 }
