@@ -23,6 +23,13 @@ public class SearchRoomServlet extends HttpServlet {
 
     }
 
+    /**
+     * Get information form the cookie and use it to display the amount of times the user has been on that page.
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PrintWriter pw = response.getWriter();
 
@@ -46,6 +53,13 @@ public class SearchRoomServlet extends HttpServlet {
                 "</html>");
     }
 
+    /**
+     * Check if the user is logged in, check if the user is a tenant.
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if(DataHandler.loginCheck(request)){
             //Session is initialized, someone is logged in

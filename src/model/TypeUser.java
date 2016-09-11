@@ -5,7 +5,7 @@ package model;
  */
 
 /**
- * Enum for User's type
+ * Enum for User's type, a user is either a tenant or a landlord
  */
 public enum TypeUser {
     TENANT, LANDLORD

@@ -18,6 +18,14 @@ import java.io.IOException;
  */
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
+
+    /**
+     * Check if posted data is correct, check if login is successful, redirect to the usertypes page.
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //Checks if posted data is correct
         if(DataHandler.login(request)){
@@ -40,6 +48,13 @@ public class LoginServlet extends HttpServlet {
 
     }
 
+    /**
+     * Get the page to display, check if there is a session
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //Gets the page to display
 

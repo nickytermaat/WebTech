@@ -19,6 +19,7 @@ import java.lang.reflect.Type;
 
 public class AddRoomServlet extends HttpServlet {
     /**
+     * Add a room
      * @param request
      * @param response
      * @throws ServletException
@@ -31,6 +32,7 @@ public class AddRoomServlet extends HttpServlet {
     }
 
     /**
+     * Retrieve the addroom page if the user is a landlord
      * @param request
      * @param response
      * @throws ServletException

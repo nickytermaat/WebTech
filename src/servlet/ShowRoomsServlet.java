@@ -20,6 +20,13 @@ public class ShowRoomsServlet extends HttpServlet {
 
     }
 
+    /**
+     * Check if the user is a landlord, print the rooms
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //Check if user is landlord
         PrintWriter pw = response.getWriter();

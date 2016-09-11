@@ -81,7 +81,6 @@ public final class DataHandler {
 
         String room = "";
 
-        //String cityRoom = rooms.getCity().toLowerCase().equals(request.getParameter("city").toLowerCase());
         for (int i = 0; i < rooms.size() ; i++) {
             if (rooms.get(i).getCity().equals(request.getParameter("city").toLowerCase())) {
                 room += "<p>Room " + i + ": $" + rooms.get(i).getPrice() + " Sqm " + rooms.get(i).getSurface() + " located in "  + rooms.get(i).getCity() + "</p> \n" ;
@@ -105,7 +104,6 @@ public final class DataHandler {
     }
 
     /**
-     * TBI
      * Checks if a session with a user exists and if his role matches the given role
      * @param request contains the user
      * @param type checks if the user is the given role
@@ -121,7 +119,6 @@ public final class DataHandler {
         return false;
     }
     /**
-     * TBI
      * Checks if a session with a user exists and if his role matches the given role
      * @param request contains the user
      * @return

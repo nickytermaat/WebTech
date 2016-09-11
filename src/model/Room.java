@@ -15,17 +15,25 @@ public class Room {
     }
 
     /**
-     * Basic getters and setters
+     * Returns the price
      * @return
      */
     public double getPrice() {
         return price;
     }
 
+    /**
+     * Returns the surface (square meters)
+     * @return
+     */
     public double getSurface() {
         return surface;
     }
 
+    /**
+     * Returns the city
+     * @return
+     */
     public String getCity() {
         return city;
     }
