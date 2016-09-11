@@ -14,6 +14,10 @@ public class Room {
         this.city = city;
     }
 
+    /**
+     * Basic getters and setters
+     * @return
+     */
     public double getPrice() {
         return price;
     }

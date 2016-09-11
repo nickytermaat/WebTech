@@ -60,6 +60,11 @@ public class SearchRoomServlet extends HttpServlet {
         }
     }
 
+    /**
+     * Checks if a cookie for a user exists. If so, return that cookie, else return a new cookie
+     * @param request contains the username to search for
+     * @return a cookie, new or existing
+     */
     private Cookie getCookieForUser(HttpServletRequest request){
         Cookie[] cookies = request.getCookies();
         //Check if cookie for this user exists, if not, create it

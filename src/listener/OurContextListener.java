@@ -20,12 +20,12 @@ public class OurContextListener implements ServletContextListener {
     public void contextInitialized(ServletContextEvent servletContextEvent) {
         //First initialization
         ServletContext ctx = servletContextEvent.getServletContext();
-        //TODO: Fix ArrayLists, use serializable file?
+
         ArrayList<User> newUsers = new ArrayList<>();
         newUsers.add(new User("Nicky", "nicky", TypeUser.TENANT));
         newUsers.add(new User("Kris", "kris", TypeUser.TENANT));
-        User landLord = new User("LandLord", "lord", TypeUser.LANDLORD);
 
+        User landLord = new User("LandLord", "lord", TypeUser.LANDLORD);
         landLord.addRoom(new Room(285.00, 18.00, "amsterdam"));
         landLord.addRoom(new Room(285.00, 12.00, "berlin"));
         landLord.addRoom(new Room(354.00, 6.00, "newyork"));

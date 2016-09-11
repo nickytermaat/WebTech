@@ -11,6 +11,11 @@ import java.util.ArrayList;
  * Created by Kris on 9/7/2016.
  */
 public final class DataHandler {
+    /**
+     * Gets a username and a password in the Request, and checks if a user with this username & password exists
+     * @param request The request contains POST data, and this will be used to check if the login is successful
+     * @return if the request is successful
+     */
     public static boolean login(HttpServletRequest request){
         ArrayList<User> users = ((ArrayList<User>) request.getServletContext().getAttribute("users"));
 
@@ -23,6 +28,11 @@ public final class DataHandler {
         return false;
     }
 
+    /**
+     * Checks if the username is unique
+     * @param request contains username
+     * @return if the username is unique
+     */
     public static boolean uniqueUser(HttpServletRequest request){
         ArrayList<User> users = ((ArrayList<User>) request.getServletContext().getAttribute("users"));
 
@@ -33,20 +43,21 @@ public final class DataHandler {
         return true;
     }
 
+    /**
+     * Adds a user
+     * @param request Contains the user's data
+     */
     public static void addUser(HttpServletRequest request){
-        System.out.println(request.getParameter("username"));
-        System.out.println();
-        System.out.println(request.getParameter("password"));
-        System.out.println();
-        System.out.println(request.getParameter("confirmpassword"));
-        System.out.println();
-        System.out.println(request.getParameter("type"));
-
         ArrayList<User> users = ((ArrayList<User>) request.getServletContext().getAttribute("users"));
 
         users.add(new User (request.getParameter("username"), request.getParameter("password"), TypeUser.valueOf(request.getParameter("type"))));
     }
 
+    /**
+     * Displays all rooms
+     * @param request contains the ServletContext that contains all rooms
+     * @return a HTML string that contains all rooms
+     */
     public static String showRooms(HttpServletRequest request){
         ArrayList<Room> rooms = ((User) request.getServletContext().getAttribute("user")).getRooms();
 
@@ -57,6 +68,11 @@ public final class DataHandler {
         return room;
     }
 
+    /**
+     * Displays all rooms that match the search criteria
+     * @param request Contains the search criteria
+     * @return a HTML string that contains the rooms that match the criteria
+     */
     public static String filterRooms(HttpServletRequest request) {
         ArrayList<Room> rooms = new ArrayList<Room>();
         for (User user :((ArrayList<User>)request.getServletContext().getAttribute("users"))) {
@@ -79,16 +95,22 @@ public final class DataHandler {
 
     }
 
+    /**
+     * Gets the room data from the request and makes a new room with it. Then adds it to the r0oms list
+     * @param request contains the room data
+     */
     public static void addRoom(HttpServletRequest request){
-
-        System.out.println(request.getParameter("sqm"));
-        System.out.println();
-        System.out.println(request.getParameter("city"));
-
         Room room = new Room(Double.valueOf(request.getParameter("price")), Double.valueOf(request.getParameter("sqm")), request.getParameter("city"));
         ((ArrayList<Room>) request.getServletContext().getAttribute("rooms")).add(room);
     }
 
+    /**
+     * TBI
+     * Checks if a session with a user exists.
+     * @param request
+     * @param type
+     * @return
+     */
     public static boolean loginCheck(HttpServletRequest request, TypeUser type){
         if(request.getSession().getAttribute("user") != null){
             //Check if a cookie exists
