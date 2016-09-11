@@ -49,6 +49,9 @@ public class SearchRoomServlet extends HttpServlet {
                 "You have visited this page " + cookie.getValue() + " times <br />" +
                 "Rooms found:" +
                 rooms +
+                "<br/><button onclick='window.history.back()'>"+
+                "Go back </button>"+
+
                 "</body>" +
                 "</html>");
     }

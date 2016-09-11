@@ -1,6 +1,7 @@
 package model;
 
 import com.sun.deploy.net.HttpRequest;
+import com.sun.org.apache.xerces.internal.util.HTTPInputSource;
 import model.User;
 
 import javax.servlet.ServletContext;
@@ -76,7 +77,8 @@ public final class DataHandler {
     public static String filterRooms(HttpServletRequest request) {
         ArrayList<Room> rooms = new ArrayList<Room>();
         for (User user :((ArrayList<User>)request.getServletContext().getAttribute("users"))) {
-            rooms.addAll(user.getRooms());
+            if(user.getType().equals(TypeUser.LANDLORD))
+                rooms.addAll(user.getRooms());
         }
 
         String room = "";
@@ -128,5 +130,13 @@ public final class DataHandler {
             return true;
         }
         return false;
+    }
+
+    /**
+     * Logs out the user
+     * @param request
+     */
+    public static void logout(HttpServletRequest request){
+        request.getSession().setAttribute("user", null);
     }
 }
