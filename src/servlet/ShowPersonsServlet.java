@@ -15,7 +15,7 @@ import java.util.ArrayList;
 /**
  * Created by Nicky on 01/09/2016.
  */
-@WebServlet("/showpersonsservlet")
+@WebServlet("/showpersons")
 public class ShowPersonsServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if(DataHandler.loginCheck(request)){
